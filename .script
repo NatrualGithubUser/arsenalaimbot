@@ -31,6 +31,10 @@ local UICorner_14 = Instance.new("UICorner")
 local fps = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
 local UICorner_15 = Instance.new("UICorner")
+local Title_2 = Instance.new("TextLabel")
+local UICorner_16 = Instance.new("UICorner")
+local TextButton = Instance.new("TextButton")
+local UICorner_17 = Instance.new("UICorner")
 
 --Properties:
 
@@ -127,7 +131,7 @@ Title5.Name = "Title5"
 Title5.Parent = frame
 Title5.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 Title5.BorderSizePixel = 0
-Title5.Position = UDim2.new(0.00808970444, 0, 0.895781696, 0)
+Title5.Position = UDim2.new(-0.00262658298, 0, 0.895781696, 0)
 Title5.Size = UDim2.new(0.374783128, 0, 0.0868486091, 0)
 Title5.Font = Enum.Font.Oswald
 Title5.Text = "toggle V to hide gui"
@@ -142,7 +146,7 @@ Title6.Name = "Title6"
 Title6.Parent = frame
 Title6.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 Title6.BorderSizePixel = 0
-Title6.Position = UDim2.new(0.470158756, 0, 0.895781636, 0)
+Title6.Position = UDim2.new(0.604112327, 0, 0.895781636, 0)
 Title6.Size = UDim2.new(0.374783128, 0, 0.086848639, 0)
 Title6.Font = Enum.Font.Oswald
 Title6.Text = "made by: oscar"
@@ -240,9 +244,37 @@ TextLabel.TextWrapped = true
 
 UICorner_15.Parent = TextLabel
 
+Title_2.Name = "Title"
+Title_2.Parent = frame
+Title_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Title_2.BorderSizePixel = 0
+Title_2.Position = UDim2.new(0.233332708, 0, -0.0707805753, 0)
+Title_2.Size = UDim2.new(0.492063135, 0, 0.0707805678, 0)
+Title_2.Font = Enum.Font.Oswald
+Title_2.Text = "arsenal.lua"
+Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.TextScaled = true
+Title_2.TextSize = 14.000
+Title_2.TextWrapped = true
+
+UICorner_16.Parent = Title_2
+
+TextButton.Parent = frame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+TextButton.Position = UDim2.new(0.381018847, 0, 0.894288063, 0)
+TextButton.Size = UDim2.new(0.238892838, 0, 0.103170767, 0)
+TextButton.Font = Enum.Font.Oswald
+TextButton.Text = "Destroy Gui"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+UICorner_17.Parent = TextButton
+
 -- Scripts:
 
-local function ZCNTER_fake_script() -- Toggle.LocalScript 
+local function WVZE_fake_script() -- Toggle.LocalScript 
 	local script = Instance.new('LocalScript', Toggle)
 
 	getgenv().aimbot = false
@@ -306,8 +338,8 @@ local function ZCNTER_fake_script() -- Toggle.LocalScript
 	
 	
 end
-coroutine.wrap(ZCNTER_fake_script)()
-local function IDGDG_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(WVZE_fake_script)()
+local function FSXTQ_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	local frames = 0
@@ -321,8 +353,16 @@ local function IDGDG_fake_script() -- TextLabel.LocalScript
 		frames = 0
 	end
 end
-coroutine.wrap(IDGDG_fake_script)()
-local function MQLMIZI_fake_script() -- ProGui.LocalScript 
+coroutine.wrap(FSXTQ_fake_script)()
+local function WNGUS_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.Parent.Parent.Parent.ProGui:Destroy()
+	end)
+end
+coroutine.wrap(WNGUS_fake_script)()
+local function JJUKXQ_fake_script() -- ProGui.LocalScript 
 	local script = Instance.new('LocalScript', ProGui)
 
 	--variables--
@@ -344,4 +384,4 @@ local function MQLMIZI_fake_script() -- ProGui.LocalScript
 		end
 	end)
 end
-coroutine.wrap(MQLMIZI_fake_script)()
+coroutine.wrap(JJUKXQ_fake_script)()
