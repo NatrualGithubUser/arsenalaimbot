@@ -35,6 +35,8 @@ local Title_2 = Instance.new("TextLabel")
 local UICorner_16 = Instance.new("UICorner")
 local TextButton = Instance.new("TextButton")
 local UICorner_17 = Instance.new("UICorner")
+local Bar_5 = Instance.new("Frame")
+local UICorner_18 = Instance.new("UICorner")
 
 --Properties:
 
@@ -45,8 +47,8 @@ ProGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 frame.Name = "frame"
 frame.Parent = ProGui
 frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-frame.Position = UDim2.new(0.717559814, 0, 0.266568482, 0)
-frame.Size = UDim2.new(0.282561392, 0, 0.593519866, 0)
+frame.Position = UDim2.new(0.604766428, 0, 0.24961935, 0)
+frame.Size = UDim2.new(0.269692361, 0, 0.539590776, 0)
 
 UICorner.Parent = frame
 
@@ -107,8 +109,8 @@ UICorner_6.Parent = Bar_3
 Bar_4.Name = "Bar"
 Bar_4.Parent = frame
 Bar_4.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-Bar_4.Position = UDim2.new(-0.00186444819, 0, 0.895781636, 0)
-Bar_4.Size = UDim2.new(1.07266939, 0, 0.104218364, 0)
+Bar_4.Position = UDim2.new(-0.00186442723, 0, 0.895781577, 0)
+Bar_4.Size = UDim2.new(1.00186467, 0, 0.104218364, 0)
 
 UICorner_7.Parent = Bar_4
 
@@ -146,8 +148,8 @@ Title6.Name = "Title6"
 Title6.Parent = frame
 Title6.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 Title6.BorderSizePixel = 0
-Title6.Position = UDim2.new(0.604112327, 0, 0.895781636, 0)
-Title6.Size = UDim2.new(0.374783128, 0, 0.086848639, 0)
+Title6.Position = UDim2.new(0.652060807, 0, 0.895781696, 0)
+Title6.Size = UDim2.new(0.310760379, 0, 0.086848639, 0)
 Title6.Font = Enum.Font.Oswald
 Title6.Text = "made by: oscar"
 Title6.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -176,8 +178,8 @@ Aimbot.Name = "Aimbot"
 Aimbot.Parent = frame
 Aimbot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Aimbot.BorderSizePixel = 0
-Aimbot.Position = UDim2.new(0.38287282, 0, 0.104218364, 0)
-Aimbot.Size = UDim2.new(0.566107571, 0, 0.791563272, 0)
+Aimbot.Position = UDim2.new(0.38287279, 0, 0.104218371, 0)
+Aimbot.Size = UDim2.new(0.533958733, 0, 0.791563272, 0)
 
 UICorner_12.Parent = Aimbot
 
@@ -272,9 +274,17 @@ TextButton.TextWrapped = true
 
 UICorner_17.Parent = TextButton
 
+Bar_5.Name = "Bar"
+Bar_5.Parent = frame
+Bar_5.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Bar_5.Position = UDim2.new(0.962821186, 0, 0, 0)
+Bar_5.Size = UDim2.new(0.0766415894, 0, 1, 0)
+
+UICorner_18.Parent = Bar_5
+
 -- Scripts:
 
-local function WVZE_fake_script() -- Toggle.LocalScript 
+local function ZMCVH_fake_script() -- Toggle.LocalScript 
 	local script = Instance.new('LocalScript', Toggle)
 
 	getgenv().aimbot = false
@@ -338,8 +348,8 @@ local function WVZE_fake_script() -- Toggle.LocalScript
 	
 	
 end
-coroutine.wrap(WVZE_fake_script)()
-local function FSXTQ_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(ZMCVH_fake_script)()
+local function XUGJO_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	local frames = 0
@@ -353,16 +363,64 @@ local function FSXTQ_fake_script() -- TextLabel.LocalScript
 		frames = 0
 	end
 end
-coroutine.wrap(FSXTQ_fake_script)()
-local function WNGUS_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(XUGJO_fake_script)()
+local function CRQCLQ_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		script.Parent.Parent.Parent.Parent.ProGui:Destroy()
 	end)
 end
-coroutine.wrap(WNGUS_fake_script)()
-local function JJUKXQ_fake_script() -- ProGui.LocalScript 
+coroutine.wrap(CRQCLQ_fake_script)()
+local function CWHQB_fake_script() -- frame.LocalScript 
+	local script = Instance.new('LocalScript', frame)
+
+	local dragger = {}; 
+	local resizer = {};
+	
+	do
+		local mouse = game:GetService("Players").LocalPlayer:GetMouse();
+		local inputService = game:GetService('UserInputService');
+		local heartbeat = game:GetService("RunService").Heartbeat;
+		-- // credits to Ririchi / Inori for this cute drag function :)
+		function dragger.new(frame)
+		    local s, event = pcall(function()
+		    	return frame.MouseEnter
+		    end)
+	
+		    if s then
+		    	frame.Active = true;
+	
+		    	event:connect(function()
+		    		local input = frame.InputBegan:connect(function(key)
+		    			if key.UserInputType == Enum.UserInputType.MouseButton1 then
+		    				local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y);
+		    				while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+		    					frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X + (frame.Size.X.Offset * frame.AnchorPoint.X), 0, mouse.Y - objectPosition.Y + (frame.Size.Y.Offset * frame.AnchorPoint.Y)), 'Out', 'Quad', 0.1, true);
+		    				end
+		    			end
+		    		end)
+	
+		    		local leave;
+		    		leave = frame.MouseLeave:connect(function()
+		    			input:disconnect();
+		    			leave:disconnect();
+		    		end)
+		    	end)
+		    end
+		end
+		
+		function resizer.new(p, s)
+			p:GetPropertyChangedSignal('AbsoluteSize'):connect(function()
+				s.Size = UDim2.new(s.Size.X.Scale, s.Size.X.Offset, s.Size.Y.Scale, p.AbsoluteSize.Y);
+			end)
+		end
+	end
+	script.Parent.Active = true
+	script.Parent.Draggable = true
+end
+coroutine.wrap(CWHQB_fake_script)()
+local function OJDMUB_fake_script() -- ProGui.LocalScript 
 	local script = Instance.new('LocalScript', ProGui)
 
 	--variables--
@@ -384,4 +442,4 @@ local function JJUKXQ_fake_script() -- ProGui.LocalScript
 		end
 	end)
 end
-coroutine.wrap(JJUKXQ_fake_script)()
+coroutine.wrap(OJDMUB_fake_script)()
